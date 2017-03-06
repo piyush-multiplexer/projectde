@@ -6,17 +6,15 @@ class SessionsController < ApplicationController
     adminuser = Adminuser.find_by(email: params[:session][:email].downcase)
     if adminuser && adminuser.authenticate(params[:session][:password])
       log_in adminuser
-      flash[:success] = 'Logged In.. '
+      flash.now[:success] = 'Logged In.. ' + '\n'+ Time.now.to_s
       redirect_to adminuser
     else
-      flash.now[:danger] = 'Invalid combination!!! '
+      flash.now[:danger] = 'Invalid combination!!! ' #+ Time.now.to_s
       render 'new'
     end
   end
 
   def destroy
-    log_out
-    flash[:info] = 'Logged Out...'
-    redirect_to root_url
+
   end
 end

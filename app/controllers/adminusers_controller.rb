@@ -8,7 +8,6 @@ class AdminusersController < ApplicationController
     # store in db if success else render new
     @adminuser = Adminuser.new(adminusers_params)
     if @adminuser.save
-      log_in @adminuser
       flash[:success] = 'Welcome Your Account has been created!'
       redirect_to @adminuser
     else
