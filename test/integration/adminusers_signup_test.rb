@@ -11,7 +11,6 @@ class AdminusersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'adminusers/show'
-    assert_not flash
-
+    assert is_logged_in?
   end
 end
