@@ -1,8 +1,0 @@
-<!-- validate session and user id after login -->
-<% if @adminuser.id == session[:adminuser_id] %>
-<h2>Welcome</h2>
-<h3>Username : <small><%= @adminuser.username %></small></h3>
-<h3>Email : <small><%= @adminuser.email %></small></h3>
-<% else %>
-    <h3> Access Denied...</h3>
-<%end%>
