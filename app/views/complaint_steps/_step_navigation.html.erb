@@ -1,0 +1,6 @@
+<ul>
+  <% if previous_step.present? %>
+    <li><%= link_to "Previous step", edit_previous_step_path %></li>
+  <% end %>
+  <li><%= f.submit next_step.present? ? "next" : "finish" %></li>
+</ul>

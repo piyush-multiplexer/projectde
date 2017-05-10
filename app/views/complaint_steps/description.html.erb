@@ -1,0 +1,44 @@
+<h1>Complaint wizard</h1>
+<h2>Step: Description</h2>
+<%= form_for complaint_step_model, :url => current_step_path, :as => :complaint do |f| %>
+    <%# TODO limit to fields of this particular step %>
+    <% if @complaint.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+
+          <ul>
+            <% @complaint.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label  'Type' %>
+      <%= f.text_field :cm_type %>
+    </div>
+    <div class="field">
+      <%= f.label 'Location' %>
+      <%= f.text_field :cm_location %>
+    </div>
+    <div class="field">
+      <%= f.label 'Date' %>
+      <%= f.text_field :cm_date %>
+    </div>
+    <div class="field">
+      <%= f.label 'Responsible Factor' %>
+      <%= f.text_field :cm_rfactor %>
+    </div>
+    <div class="field">
+      <%= f.label 'Description' %>
+      <%= f.text_field :cm_details %>
+    </div>
+    <div class="field">
+      <%= f.label 'Photo' %>
+      <%= f.text_field :cm_photo %>
+    </div>
+
+
+    <%= render 'step_navigation', f: f %>
+<% end %>

@@ -1,0 +1,52 @@
+<h1>Complaint wizard</h1>
+<h2>Step: Userinfo</h2>
+<%= form_for complaint_step_model, :url => current_step_path, :as => :complaint do |f| %>
+    <%# TODO limit to fields of this particular step %>
+    <% if @complaint.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+
+          <ul>
+            <% @complaint.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label 'First Name' %>
+      <%= f.text_field :r_fname %>
+    </div>
+    <div class="field">
+      <%= f.label :'Last Name' %>
+      <%= f.text_field :r_lname %>
+    </div>
+    <div class="field">
+      <%= f.label 'Age' %>
+      <%= f.text_field :r_age %>
+    </div>
+    <div class="field">
+      <%= f.label 'Email' %>
+      <%= f.text_field :r_email %>
+    </div>
+    <div class="field">
+      <%= f.label 'Phone' %>
+      <%= f.text_field :r_phone %>
+    </div>
+    <div class="field">
+      <%= f.label 'Pincode' %>
+      <%= f.text_field :r_pincode %>
+    </div>
+    <div class="field">
+      <%= f.label 'Address' %>
+      <%= f.text_field :r_address %>
+    </div>
+    <div class="field">
+      <%= f.label 'Photo' %>
+      <%= f.text_field :r_photo %>
+    </div>
+
+
+    <%= render 'step_navigation', f: f %>
+<% end %>
