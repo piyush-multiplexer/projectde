@@ -15,6 +15,13 @@ port        ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
+# if ENV.fetch("RAILS_ENV") == 'development'
+#   ssl_bind '127.0.0.1', '3000', {
+#       key => '/home/multiplexer/.ssh/server.key',
+#       :cert => '/home/multiplexer/.ssh/server.crt',
+#       :verify_mode => 'none'
+#   }
+# end
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.

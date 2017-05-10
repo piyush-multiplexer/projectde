@@ -1,48 +1,32 @@
 Rails.application.routes.draw do
-  resources :adminusers
 
-  root 'home#index'
+  resources :complaints, only: [:create, :show] do
+    resources :complaint_steps, only: [:edit, :update]
+  end
 
-  get 'home/index'
-
-  get 'home/show'
-
-  get 'contactus/new'
-
-  get 'contactus/create'
-
-  get 'contactus/show'
-
-  get 'contactus/update'
-
-  get 'contactus/edit'
-
-  get 'contactus/destroy'
-
-  get 'contactus/index'
-
-  get 'adminusers/new'
-
-  get 'adminusers/create'
-
-  get 'adminusers/show'
-
-  get 'adminusers/update'
-
-  get 'adminusers/edit'
-
-  get 'adminusers/destroy'
-
-  post 'adminusers/new', to: 'adminusers#create'
-  get 'adminusers/index'
+  resources :complaints
+  root to: 'home#index'
 
   get 'about/index'
-  get 'sessions/new'
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
-  get 'contactus' => 'contactus#index'
-  get 'about' => 'about#index'
+  get 'contact/index'
+  get 'home/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
+      shared: 'users/shared',
+      mailer: 'users/mailer',
+      unlocks: 'users/unlocks',
+      passwords: 'users/passwords'
+  }
+  devise_for :admins, controllers: {
+      sessions: 'admins/sessions',
+      registrations: 'admins/registrations',
+      confirmations: 'admins/confirmations',
+      shared: 'admins/shared',
+      mailer: 'admins/mailer',
+      unlocks: 'admins/unlocks',
+      passwords: 'admins/passwords'
+  }
 end
