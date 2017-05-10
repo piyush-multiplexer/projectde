@@ -21,10 +21,11 @@ body {
     line-height: 1.5em;
 }
 header{
+    padding-top: 10px;
     background: #333333;
     color: #ffffff;
     height: 80px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 footer{
     height: 60px;
