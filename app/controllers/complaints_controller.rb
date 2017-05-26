@@ -3,16 +3,20 @@ class ComplaintsController < ApplicationController
   helper ComplaintStepsHelper
 
   before_action :set_complaint, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   # GET /complaints
   # GET /complaints.json
   def index
-    @complaints = current_user.complaints.all
+    if user_signed_in?
+      @complaints = current_user.complaints.all
+    end
   end
 
   # GET /complaints/1
   # GET /complaints/1.json
   def show
+    @complaint
+    render :show
   end
 
   # GET /complaints/new
@@ -30,7 +34,7 @@ class ComplaintsController < ApplicationController
     @complaint = current_user.complaints.new(complaint_params)
 
     respond_to do |format|
-      if @complaint.save(validation: false)
+      if @complaint.save(validation: true)
         format.html {redirect_to edit_complaint_complaint_step_path(@complaint, ComplaintStepsHelper::STEPS.first)}
         format.json {render :show, status: :created, location: @complaint}
       else
@@ -60,7 +64,7 @@ class ComplaintsController < ApplicationController
     @complaint.destroy
     respond_to do |format|
       format.html {redirect_to complaints_url, notice: 'Complaint was successfully destroyed.'}
-      format.json { head :no_content }
+      format.json {head :no_content}
     end
   end
 
@@ -74,6 +78,6 @@ class ComplaintsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def complaint_params
     return {} unless params[:complaint].present?
-    params.require(:complaint).permit(:r_fname, :r_lname, :r_age, :r_email, :r_phone, :r_pincode, :r_address, :r_photo, :v_fname, :v_lname, :v_age, :v_phone, :v_email, :v_address, :v_relation, :v_photo, :c_fullname, :c_age, :c_address, :c_photo, :c_details, :cm_type, :cm_location, :cm_date, :cm_rfactor, :cm_details, :cm_photo, :userid, :complaintid)
+    params.require(:complaint).permit(:r_fname, :r_lname, :r_age, :r_gender, :r_email, :r_phone, :r_pincode, :r_address, :r_photo, :v_fname, :v_lname, :v_age, :v_gender, :v_phone, :v_email, :v_address, :v_relation, :v_photo, :c_fullname, :c_age, :c_gender, :c_address, :c_photo, :c_details, :cm_type, :cm_location, :cm_date, :cm_rfactor, :cm_details, :cm_photo, :user_id, :complaintid)
   end
 end

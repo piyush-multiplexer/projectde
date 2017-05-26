@@ -1,0 +1,2 @@
+module Users::MultiFactorAuthenticationHelper
+end
