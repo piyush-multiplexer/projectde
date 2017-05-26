@@ -1,24 +1,19 @@
 # README
+...Under Construction...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-> Dependency Version
+    rails 5.0.3
+    ruby 2.4
 
-Things you may want to cover:
+Gem Used Mainly:
+  devise
+  rails_admin
+  bootstrap_form
+  active_model_otp
+  rqrcode
+  ultra_light_wizard
+  
+Seperate User & Admin Model (devise)  
+2FA enable on account user (google authenticator or else)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+multistep form (personal use)
