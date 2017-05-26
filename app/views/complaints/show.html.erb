@@ -1,14 +1,47 @@
-<p id="notice"><%= notice %></p>
+<table border="1">
+  <caption><strong>Complaintid:</strong><%= @complaint.id %><strong>User id:</strong><%= @complaint.user_id %></caption>
+  <tr>
+    <th>User Details</th>
+    <th>Complaint Details(Brief Description)</th>
+    <th>Victim Details</th>
+    <th>Against Details(His/Her/It/Thier)</th>
+  </tr>
+  <tr><td>
+    <strong>First Name:</strong><%= @complaint.r_fname %><br/>
+    <strong>Last Name:</strong><%= @complaint.r_lname %><br/>
+    <strong>Age:</strong><%= @complaint.r_age %><br/>
+    <strong>Gender:</strong><%= @complaint.r_gender %><br/>
+    <strong>Email:</strong><%= @complaint.r_email %><br/>
+    <strong>Phone:</strong><%= @complaint.r_phone %><br/>
+    <strong>Pincode:</strong><%= @complaint.r_pincode %><br/>
+    <strong>Address:</strong><%= @complaint.r_address %><br/>
+    <strong>Photo:</strong><%= @complaint.r_photo %><br/></td>
+    <td><strong>Complaint Type:</strong><%= @complaint.cm_type %><br/>
+      <strong>Location:</strong><%= @complaint.cm_location %><br/>
+      <strong>Date:</strong><%= @complaint.cm_date %><br/>
+      <strong>Responsible Factors:</strong><%= @complaint.cm_rfactor %><br/>
+      <strong>Details:</strong><%= @complaint.cm_details %><br/>
+      <strong>Photo:</strong><%= @complaint.cm_photo %><br/></td>
+    <td><strong>Victim First Name:</strong><%= @complaint.v_fname %><br/>
+      <strong>Last Name:</strong><%= @complaint.v_lname %><br/>
+      <strong>Age:</strong><%= @complaint.v_age %><br/>
+      <strong>Gender:</strong><%= @complaint.v_gender %><br/>
+      <strong>Email:</strong><%= @complaint.v_email %><br/>
+      <strong>Phone:</strong><%= @complaint.v_phone %><br/>
+      <strong>Address:</strong><%= @complaint.v_address %><br/>
+      <strong>Relation:</strong><%= @complaint.v_relation %><br/>
+      <strong>Photo:</strong><%= @complaint.v_photo %><br/></td>
+    <td><strong>Full Name:</strong><%= @complaint.c_fullname %><br/>
+      <strong>Age:</strong><%= @complaint.c_age %><br/>
+      <strong>Gender:</strong><%= @complaint.c_gender %><br/>
+      <strong>Address:</strong><%= @complaint.c_address %><br/>
+      <strong>Details:</strong><%= @complaint.c_details %><br/>
+      <strong>Photo:</strong><%= @complaint.c_photo %><br/>
+      </td>
+  </tr>
+</table>
 
-<p>
-  <strong>Complaintid:</strong>
-  <%= @complaint.id %>
-</p>
 
-<p>
-  <strong>User id:</strong>
-  <%= @complaint.user_id %>
-</p>
 
 <%= link_to 'Edit', edit_complaint_path(@complaint) %> |
 <%= link_to 'Back', complaints_path %>

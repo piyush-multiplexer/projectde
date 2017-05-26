@@ -1,25 +1,53 @@
-<%= form_for(complaint) do |f| %>
-  <% if complaint.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+<%= bootstrap_form_for(complaint) do |f| %>
+    <%= render 'partials/error_messages', object: f.object %>
+    <%= f.text_field :id, label: 'ID'%>
+    <%= f.text_field :user_id, label: 'User id'%>
+    <%= f.text_field :complaintid , label: 'Complaint id'%>
+    <h4>User(Your) Info</h4>
+    <%= f.text_field :r_fname, label: 'First Name', required: true %>
+    <%= f.text_field :r_lname, label: 'Last Name', required: true  %>
+    <%= f.number_field :r_age, label: 'Age', required: true  %>
+    <%= f.form_group :r_gender, label: {text: 'Gender'} , help: 'Select your gender' do %>
+        <%= f.radio_button :r_gender, 0, label: 'Male', inline: true, checked: true %>
+        <%= f.radio_button :r_gender, 1, label: 'Female', inline: true %>
+    <% end %>
+    <%= f.email_field :r_email, label: 'Email', required: true  %>
+    <%= f.phone_field :r_phone, label: 'Phone', required: true  %>
+    <%= f.text_field :r_pincode, label: 'Pincode', required: true  %>
+    <%= f.text_area :r_address, label: 'Address', size: '10x2', required: true  %>
+    <%= f.text_field :r_photo, label: 'Photo', required: true  %>
+    <h4>Victim Info</h4>
+    <%= f.text_field :v_fname, label: 'First Name', required: true %>
+    <%= f.text_field :v_lname, label: 'Last Name', required: true  %>
+    <%= f.number_field :v_age, label: 'Age', required: true  %>
+    <%= f.form_group :v_gender, label: {text: 'Gender'} , help: 'Select your gender' do %>
+        <%= f.radio_button :v_gender, 0, label: 'Male', inline: true, checked: true %>
+        <%= f.radio_button :v_gender, 1, label: 'Female', inline: true %>
+    <% end %>
+    <%= f.email_field :v_email, label: 'Email', required: true  %>
+    <%= f.phone_field :v_phone, label: 'Phone', required: true  %>
+    <%= f.text_area :v_address, label: 'Address', size: '10x2', required: true %>
+    <%= f.text_field :v_relation, label: 'Relation', required: true  %>
+    <%= f.text_field :v_photo, label: 'Photo', required: true  %>
+    <h4>Against Info</h4>
+    <%= f.text_field :c_fullname, label: 'Full Name', required: true %>
+    <%= f.number_field :c_age, label: 'Age', required: true %>
+    <%= f.form_group :c_gender, label: {text: 'Gender'} , help: 'Select your gender' do %>
+        <%= f.radio_button :c_gender, 0, label: 'Male', inline: true, checked: true %>
+        <%= f.radio_button :c_gender, 1, label: 'Female', inline: true %>
+    <% end %>
+    <%= f.text_area :c_address, label: 'Address', size: '10x2', required: true %>
+    <%= f.text_area :c_details, label: 'Description', size: '10x5', required: true %>
+    <%= f.text_field :c_photo, label: 'Photo', required: true %>
+    <h4>Complaint Info</h4>
+    <%= f.select :cm_type, [['Theft'], ['Abuse']], { label: "Choose  Category:" }, { class: 'selectpicker' } %>
+    <%= f.text_field :cm_location, label: 'Location', required: true %>
+    <%= f.date_field :cm_date, label: 'Date', required: true %>
+    <%= f.text_field :cm_rfactor, label: 'Responsible Factors', required: true %>
+    <%= f.text_area :cm_details, label: 'Description', size: '20x10', required: true %>
+    <%= f.text_field :cm_photo, label: 'Photo', required: true %>
 
-      <ul>
-      <% complaint.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :id %>
-    <%= f.text_field :id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
 
   <div class="actions">
     <%= f.submit %>

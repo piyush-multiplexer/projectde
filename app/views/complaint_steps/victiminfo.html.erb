@@ -1,52 +1,20 @@
 <h1>Complaint wizard</h1>
 <h2>Step: Victiminfo</h2>
-<%= form_for complaint_step_model, :url => current_step_path, :as => :complaint do |f| %>
-    <%# TODO limit to fields of this particular step %>
-    <% if @complaint.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
-
-          <ul>
-            <% @complaint.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label 'First Name' %>
-      <%= f.text_field :v_fname %>
-    </div>
-    <div class="field">
-      <%= f.label 'Last Name' %>
-      <%= f.text_field :v_lname %>
-    </div>
-    <div class="field">
-      <%= f.label 'Age' %>
-      <%= f.text_field :v_age %>
-    </div>
-    <div class="field">
-      <%= f.label 'Email' %>
-      <%= f.text_field :v_age %>
-    </div>
-    <div class="field">
-      <%= f.label 'Phone' %>
-      <%= f.text_field :v_phone %>
-    </div>
-    <div class="field">
-      <%= f.label 'Address' %>
-      <%= f.text_field :v_address %>
-    </div>
-    <div class="field">
-      <%= f.label 'Relation' %>
-      <%= f.text_field :v_relation %>
-    </div>
-    <div class="field">
-      <%= f.label 'Photo' %>
-      <%= f.text_field :v_photo %>
-    </div>
-
+<%= bootstrap_form_for complaint_step_model, layout: :horizontal, :url => current_step_path, :as => :complaint do |f| %>
+    <%= render 'partials/error_messages', object: f.object %>
+      <%= f.text_field :v_fname, label: 'First Name', required: true %>
+      <%= f.text_field :v_lname, label: 'Last Name', required: true  %>
+      <%= f.number_field :v_age, label: 'Age', required: true  %>
+      <%= f.text_field :v_gender, label: 'Gender', required: true  %>
+      <%= f.form_group :v_gender, label: {text: 'Gender'} , help: 'Select your gender' do %>
+          <%= f.radio_button :v_gender, 0, label: 'Male', inline: true, checked: true %>
+          <%= f.radio_button :v_gender, 1, label: 'Female', inline: true %>
+      <% end %>
+      <%= f.email_field :v_email, label: 'Email', required: true  %>
+      <%= f.phone_field :v_phone, label: 'Phone', required: true  %>
+      <%= f.text_area :v_address, label: 'Address', size: '10x2', required: true %>
+      <%= f.text_field :v_relation, label: 'Relation', required: true  %>
+      <%= f.text_field :v_photo, label: 'Photo', required: true  %>
 
     <%= render 'step_navigation', f: f %>
 <% end %>

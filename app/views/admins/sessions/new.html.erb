@@ -1,26 +1,17 @@
 <h2>Admin Login</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="form-group">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.email_field :email, label: :email, autofocus: true %>
+    <%= f.password_field :password, label: :password, autocomplete: "off" %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+    <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me, label: :remember_me %>
+    <% end -%>
 
-  <div class="form-group">
-    <%= f.submit "Log in", class: 'btn-primary' %>
-  </div>
+    <%= f.text_field :otp_code_token, placeholder: 'Token', class: 'form-control' %>
+
+    <%= f.submit 'Login' %>
 <% end %>
 
 <%= render "admins/shared/links" %>

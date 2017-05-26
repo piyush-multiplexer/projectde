@@ -1,6 +1,5 @@
-<ul>
+
   <% if previous_step.present? %>
-    <li><%= link_to "Previous step", edit_previous_step_path %></li>
+    <%= link_to 'Previous step', edit_previous_step_path , class: 'btn btn-primary'%>
   <% end %>
-  <li><%= f.submit next_step.present? ? "next" : "finish" %></li>
-</ul>
+  <%= f.submit next_step.present? ? 'next' : 'finish', class: current_step == 'description' ? 'btn btn-success' : 'btn btn-primary' %>

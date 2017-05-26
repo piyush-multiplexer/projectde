@@ -1,1 +1,23 @@
-<h1>Contact#index</h1>
+<h2>Contact us</h2>
+
+<%= form_for @message, url: contact_create_path do |f| %>
+<div class="form-group">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="form-group">
+  <%= f.label :subject %><br />
+  <%= f.text_field :subject %>
+</div>
+
+<div class="form-group">
+  <%= f.submit 'Submit', class: 'btn-primary' %>
+</div>
+<% end %>
+
