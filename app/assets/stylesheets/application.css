@@ -12,30 +12,52 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
+ *= require rails_bootstrap_forms
  */
+
 body {
-    padding-top: 50px;
     font-family: 'Arial', Sans-Serif;
     font-size: 14px;
-    color: #666666;
+    color: #666666;padding-bottom: 1px;
     line-height: 1.5em;
 }
 header{
-    padding-top: 10px;
     background: #333333;
     color: #ffffff;
+    width: inherit;
     height: 80px;
-    margin-bottom: 10px;
+    width: 100%;
 }
-footer{
-    height: 60px;
+#footer{
+    height: 30px;
     background: #333333;
     color: #ffffff;
+    padding-bottom:70px;
     text-align: center;
-    padding-top: 20px;
-    margin-top: 20px;
+    font-size: 15px;
+    vertical-align: 10px;
 }
 #timestamp{
     position: relative;
     float: left;
 }
+#footerbb{  font-size: 17px;}
+.qr {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+}
+.qr td {
+    border-width: 0;
+    border-style: none;
+    border-color: #0000ff;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+    width: 10px;
+    height: 10px;
+}
+.qr td.black { background-color: #000; }
+.qr td.white { background-color: #fff; }
