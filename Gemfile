@@ -1,13 +1,21 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'devise'
+gem 'bootstrap_form'
 
+gem 'active_model_otp'
+gem 'devise'
+gem 'pdfkit'
+gem 'rqrcode'
+gem 'wkhtmltopdf'
+gem 'sendgrid-ruby'
+gem 'rails_admin'
 gem 'rails', '~> 5.0.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
