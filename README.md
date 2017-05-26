@@ -2,8 +2,8 @@ PROJECTDE - UNDER CONSTRUCTION!
 ===============================
 ### Dependncy Version
 
-|          |       |
-| :------ | ------: |
+|         |       |
+| :------ | :---: |
 | rails   | 5.0.3 |
 | ruby    | 2.4   |
 
