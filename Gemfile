@@ -1,16 +1,20 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'bootstrap_form'
-
 gem 'active_model_otp'
+gem 'bootstrap_form'
+gem 'cancancan'
+gem 'carrierwave'
 gem 'devise'
+gem 'httparty'
+gem 'mail_form'
 gem 'pdfkit'
+gem 'paper_trail'
 gem 'rqrcode'
 gem 'wkhtmltopdf'
-gem 'sendgrid-ruby'
 gem 'rails_admin'
 gem 'rails', '~> 5.0.2'
+
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
@@ -52,7 +56,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-gem 'ultra_light_wizard', '~> 0.1.2'
+# gem 'ultra_light_wizard', '~> 0.1.2'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'wicked'

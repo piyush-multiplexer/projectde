@@ -1,3 +1,9 @@
+Admin Roles -> superadmin, admin, member(default)
+2FA using authenticator in users and admins
+Email verification
+OTP verification via SMS
+
+
 User_Info(who is registering)
 r_fname
 r_lname
@@ -35,3 +41,18 @@ cm_photo
 
 userid
 complaintid
+
+ComplaintID(########)
+u_id + date + rnd(no) + rnd(no)+ mon + Year + cid
+00001      12     00     00       MAR    14 00001
+
+999
+(10-A)(1???-A)
+1000 - A00
+1001 - A01
+1099 - A99
+(11-B)
+1100 - B00
+1199 - B99 ...2345678 - CDEFGHI
+(19-j)
+1900
