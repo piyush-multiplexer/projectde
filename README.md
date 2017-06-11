@@ -11,10 +11,15 @@ PROJECTDE - UNDER CONSTRUCTION!
 
 > - devise
 > - rails_admin
+> - cancancan
+> - carrierwave
+> - paper_trail
+> - httparty
 > - bootstrap_form
 > - active_model_otp
 > - rqrcode
-> - ultra_light_wizard
+> - wicked(wizard)
+> - mail_form
 	
 Seperate User & Admin Model (devise)  
 2FA enable on account user (google authenticator or else)
