@@ -1,0 +1,13 @@
+<h2>Contact</h2>
+
+<%= bootstrap_form_for @contact, width: 10 do |f| %>
+
+      <%= f.text_field :name, label: 'Full Name', autofocus: true %>
+      <%= f.email_field :email, label:'Email', autofocus: true %>
+      <%= f.text_area :message, label: 'Message', as: :text, autofocus: true %>
+    <div class="hidden">
+      <%= f.label :nickname %><br />
+      <%= f.email_field :nickname, hint: 'leave blank' %>
+    </div>
+      <%= f.submit "send message", class: 'btn btn-primary' %>
+<% end %>

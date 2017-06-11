@@ -1,5 +1,5 @@
 
-  <% if previous_step.present? %>
-    <%= link_to 'Previous step', edit_previous_step_path , class: 'btn btn-primary'%>
+  <% if step != 'userinfo' %>
+    <%= link_to 'Previous step', previous_wizard_path , class: 'btn btn-primary'%>
   <% end %>
-  <%= f.submit next_step.present? ? 'next' : 'finish', class: current_step == 'description' ? 'btn btn-success' : 'btn btn-primary' %>
+  <%= f.submit next_wizard_path ? 'finish' : 'next', class: step == 'description' ? 'btn btn-success' : 'btn btn-primary' %>

@@ -1,11 +1,10 @@
 <h1>Complaint wizard</h1>
 <h2>Step: Victiminfo</h2>
-<%= bootstrap_form_for complaint_step_model, layout: :horizontal, :url => current_step_path, :as => :complaint do |f| %>
+<%= bootstrap_form_for @complaint, html: { multipart: true }, layout: :horizontal, :url => wizard_path, :as => :complaint do |f| %>
     <%= render 'partials/error_messages', object: f.object %>
       <%= f.text_field :v_fname, label: 'First Name', required: true %>
       <%= f.text_field :v_lname, label: 'Last Name', required: true  %>
       <%= f.number_field :v_age, label: 'Age', required: true  %>
-      <%= f.text_field :v_gender, label: 'Gender', required: true  %>
       <%= f.form_group :v_gender, label: {text: 'Gender'} , help: 'Select your gender' do %>
           <%= f.radio_button :v_gender, 0, label: 'Male', inline: true, checked: true %>
           <%= f.radio_button :v_gender, 1, label: 'Female', inline: true %>
@@ -14,7 +13,7 @@
       <%= f.phone_field :v_phone, label: 'Phone', required: true  %>
       <%= f.text_area :v_address, label: 'Address', size: '10x2', required: true %>
       <%= f.text_field :v_relation, label: 'Relation', required: true  %>
-      <%= f.text_field :v_photo, label: 'Photo', required: true  %>
+      <%= f.file_field :v_photo, label: 'Photo', required: true  %>
 
     <%= render 'step_navigation', f: f %>
 <% end %>

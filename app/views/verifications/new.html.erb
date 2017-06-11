@@ -1,0 +1,23 @@
+<div id="send-pin">
+  <h3>What's your phone number?</h3>
+  <%= form_for @verification, remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_field :phone_number %>
+      </div>
+      <%= f.submit "Send PIN", class: "btn btn-primary", id: 'send-pin-link' %>
+  <% end %>
+</div>
+<div id="verify-pin">
+  <h3>Enter your PIN</h3>
+  <%= form_tag 'verify' , remote: true do |f| %>
+      <%= hidden_field_tag 'hidden_phone_number', '' %>
+      <div class="form-group">
+        <%= number_field_tag :pin %>
+      </div>
+      <%= submit_tag "Verify PIN #{$session_id}", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div id="status-box" class="alert alert-success">
+  <p id="status-message">Status: Haven’t done anything yet</p>
+</div>

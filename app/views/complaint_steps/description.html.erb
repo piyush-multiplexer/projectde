@@ -1,13 +1,13 @@
 <h1>Complaint wizard</h1>
 <h2>Step: Description</h2>
-<%= bootstrap_form_for complaint_step_model, layout: :horizontal, :url => current_step_path, :as => :complaint do |f| %>
+<%= bootstrap_form_for @complaint, html: { multipart: true }, layout: :horizontal, :url => wizard_path, :as => :complaint do |f| %>
     <%= render 'partials/error_messages', object: f.object %>
       <%= f.select :cm_type, [['Theft'], ['Abuse']], { label: "Choose  Category:" }, { class: 'selectpicker' } %>
       <%= f.text_field :cm_location, label: 'Location', required: true %>
       <%= f.date_field :cm_date, label: 'Date', required: true %>
       <%= f.text_field :cm_rfactor, label: 'Responsible Factors', required: true %>
       <%= f.text_area :cm_details, label: 'Description', size: '20x10', required: true %>
-      <%= f.text_field :cm_photo, label: 'Photo', required: true %>
+      <%= f.file_field :cm_photo, label: 'Photo', required: true %>
 
     <%= render 'step_navigation', f: f %>
 <% end %>

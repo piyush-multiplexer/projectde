@@ -1,6 +1,6 @@
 <h1>Complaint wizard</h1>
 <h2>Step: Againstinfo</h2>
-<%= bootstrap_form_for complaint_step_model, layout: :horizontal, :url => current_step_path, :as => :complaint do |f| %>
+<%= bootstrap_form_for @complaint, html: { multipart: true }, layout: :horizontal, :url => wizard_path, :as => :complaint do |f| %>
     <%= render 'partials/error_messages', object: f.object %>
 
       <%= f.text_field :c_fullname, label: 'Full Name', required: true %>
@@ -11,6 +11,6 @@
       <% end %>
       <%= f.text_area :c_address, label: 'Address', size: '10x2', required: true %>
       <%= f.text_area :c_details, label: 'Description', size: '10x5', required: true %>
-      <%= f.text_field :c_photo, label: 'Photo', required: true %>
+      <%= f.file_field :c_photo, label: 'Photo', required: true %>
     <%= render 'step_navigation', f: f %>
 <% end %>

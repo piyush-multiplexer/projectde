@@ -1,6 +1,6 @@
 <h1>Complaint wizard</h1>
 <h2>Step: Userinfo</h2>
-<%= bootstrap_form_for complaint_step_model, layout: :horizontal, :url => current_step_path, :as => :complaint do |f| %>
+<%= bootstrap_form_for @complaint, html: { multipart: true }, layout: :horizontal, :url => wizard_path, :as => :complaint do |f| %>
     <%= render 'partials/error_messages', object: f.object %>
       <%= f.text_field :r_fname, label: 'First Name', required: true%>
       <%= f.text_field :r_lname, label: 'Last Name', required: true  %>
@@ -13,7 +13,7 @@
       <%= f.phone_field :r_phone, label: 'Phone', required: true  %>
       <%= f.text_field :r_pincode, label: 'Pincode', required: true  %>
       <%= f.text_area :r_address, label: 'Address', size: '10x2', required: true  %>
-      <%= f.text_field :r_photo, label: 'Photo', required: true  %>
+      <%= f.file_field :r_photo, label: 'Photo', required: true  %>
 
     <%= render 'step_navigation', f: f %>
 <% end %>

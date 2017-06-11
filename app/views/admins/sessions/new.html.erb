@@ -9,7 +9,7 @@
         <%= f.check_box :remember_me, label: :remember_me %>
     <% end -%>
 
-    <%= f.text_field :otp_code_token, placeholder: 'Token', class: 'form-control' %>
+    <%= f.text_field :otp_code_token, label: 'OTP Token', placeholder: '6-digit code', class: 'form-control' %>
 
     <%= f.submit 'Login' %>
 <% end %>

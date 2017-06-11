@@ -2,32 +2,36 @@
     <%= link_to 'New Complaint', complaints_path, method: :post %>
 <% else %>
 
-<h1>Complaints</h1>
+    <h1>Complaints</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>User</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @complaints.each do |complaint| %>
+    <table class="table table-hover">
+      <thead>
       <tr>
-        <td><%= complaint.id %></td>
-        <td><%= current_user.email %></td>
-        <td>'Coming Soon'</td>
-        <td><%= link_to 'Show', complaint %></td>
-        <td><%= link_to 'Edit', edit_complaint_path(complaint) %></td>
-        <td><%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Id</th>
+        <th>User</th>
+        <th>Complaint ID</th>
+        <th>Status</th>
+        <th>Actions</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-    <%= link_to 'New Complaint', complaints_path, method: :post %>
+      </thead>
+
+      <tbody>
+      <% @complaints.each do |complaint| %>
+          <tr>
+            <td><%= complaint.id %></td>
+            <td><%= current_user.email %></td>
+            <td><%= complaint.complaintid %></td>
+            <td>'Coming Soon'</td>
+            <td><%= link_to 'Show', complaint %>
+            <%= link_to 'Edit', edit_complaint_path(complaint) %>
+            <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'New Complaint', new_complaint_path %>
 <% end %>
 
 

@@ -2,51 +2,54 @@
   <div class="col-sm-6 col-sm-offset-5">
     <h1>Edit <%= resource_name.to_s.humanize %></h1>
     <hr>
-    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
         <%= devise_error_messages! %>
 
-        <%= f.email_field :email, class: 'form-control'  %>
+        <%= f.email_field :email, class: 'form-control' %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-        <%= f.password_field :password, help: "(leave blank if you don't want to change it)", autocomplete: "off", class: 'form-control'  %>
+        <%= f.password_field :password, help: "(leave blank if you don't want to change it)", autocomplete: "off", class: 'form-control' %>
 
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
 
-        <%= f.password_field :current_password, help: "(we need your current password to confirm your changes", autocomplete: "off", class: 'form-control'  %>
+        <%= f.password_field :current_password, help: "(we need your current password to confirm your changes", autocomplete: "off", class: 'form-control' %>
 
         <%= f.submit "Update", class: 'btn btn-lg btn-block btn-primary' %>
         <%= link_to "#{@admin.otp_module_enabled? ? 'Disable' : 'Enable'} Two Factor",
                     '#two_factor',
-                    data: { toggle: :modal },
+                    data: {toggle: :modal},
                     class: 'btn btn-lg btn-block btn-info' %>
         <%= link_to 'Back', :back, class: 'btn btn-lg btn-block btn-default' %>
 
     <% end %>
-
+    <br/>
+    <p>Cancel my account
+      <b>Unhappy? </b><%= button_to "Cancel my account", registration_path(resource_name), class: 'btn btn-lg btn-block  btn-danger', data: {confirm: "Are you sure?"}, method: :delete %>
+    </p>
   </div>
-  <p>Cancel my account <b>Unhappy? </b><%= button_to "Cancel my account", registration_path(resource_name), class:'btn btn-lg btn-block  btn-danger' , data: { confirm: "Are you sure?" }, method: :delete %></p>
 </div>
 
 <div class="modal fade" id="two_factor">
   <% url = @admin.otp_module_enabled? ? disable_multi_factor_authentication_admin_path(@admin) : enable_multi_factor_authentication_admin_path(@admin) %>
-  <%= bootstrap_form_for :multi_factor_authentication, url: url, html: { class: 'form-inline' }  do |f| %>
+  <%= bootstrap_form_for :multi_factor_authentication, url: url, html: {class: 'form-inline'} do |f| %>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title"><%= @admin.otp_module_enabled? ? 'Disable' : 'Enable' %> Two Factor Authentication</h4>
+            <h4 class="modal-title"><%= @admin.otp_module_enabled? ? 'Disable' : 'Enable' %> Two Factor
+              Authentication</h4>
           </div>
           <div class="modal-body">
             <% unless @admin.otp_module_enabled? %>
-                <% qr = RQRCode::QRCode.new(resource.provisioning_uri, size: 10, level: :h ) %>
+                <% qr = RQRCode::QRCode.new(resource.provisioning_uri, size: 10, level: :h) %>
                 <table class="qr" align="center">
                   <% qr.modules.each_index do |x| %>
                       <tr>
                         <% qr.modules.each_index do |y| %>
-                            <% if qr.dark?(x,y) %>
+                            <% if qr.dark?(x, y) %>
                                 <td class="black"/>
                             <% else %>
                                 <td class="white"/>
@@ -59,7 +62,7 @@
             <% end %>
             <div class='form-group'>
               <div class='text-center'>
-                <%= f.text_field :otp_code_token, label:"OTP Token ", margin: '2px', placeholder: 'Verify Token', class: 'form-control input-lg' %>
+                <%= f.text_field :otp_code_token, label: "OTP Token ", margin: '2px', placeholder: 'Verify Token', class: 'form-control input-lg' %>
               </div>
             </div>
           </div>

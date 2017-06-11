@@ -1,2 +1,2 @@
-json.extract! complaint, :id, :created_at, :updated_at, :r_fname, :r_lname, :r_age, :r_gender, :r_email, :r_phone, :r_pincode, :r_address, :r_photo, :v_fname, :v_lname, :v_age, :v_gender, :v_phone, :v_email, :v_address, :v_relation, :v_photo, :c_fullname, :c_age, :c_gender, :c_address, :c_photo, :c_details, :cm_type, :cm_location, :cm_date, :cm_rfactor, :cm_details, :cm_photo, :user_id, :complaintid
+json.extract! complaint, :id, :created_at, :updated_at
 json.url complaint_url(complaint, format: :json)
