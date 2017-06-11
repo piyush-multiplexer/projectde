@@ -26,8 +26,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.action_mailer.default_url_options = { host: 'localhost' }
-
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.perform_deliveries = true # now your email will get delivered
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   config.middleware.use "PDFKit::Middleware", :print_media_type => true
