@@ -1,7 +1,4 @@
 class ComplaintsController < ApplicationController
-  include ComplaintStepsHelper
-  helper ComplaintStepsHelper
-
   before_action :set_complaint, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
   # GET /complaints
@@ -15,8 +12,6 @@ class ComplaintsController < ApplicationController
   # GET /complaints/1
   # GET /complaints/1.json
   def show
-    @complaint
-    render :show
   end
 
   # GET /complaints/new
@@ -34,8 +29,8 @@ class ComplaintsController < ApplicationController
     @complaint = current_user.complaints.new(complaint_params)
 
     respond_to do |format|
-      if @complaint.save(validation: true)
-        format.html {redirect_to edit_complaint_complaint_step_path(@complaint, ComplaintStepsHelper::STEPS.first)}
+      if @complaint.save
+        format.html {redirect_to complaint_steps_path}
         format.json {render :show, status: :created, location: @complaint}
       else
         format.html {render :new}
@@ -49,7 +44,7 @@ class ComplaintsController < ApplicationController
   def update
     respond_to do |format|
       if @complaint.update(complaint_params)
-        format.html {redirect_to @complaint, notice: 'Complaint was successfully updated.'}
+        format.html {redirect_to @complaint, notice: "Complaint was successfully updated. #{undo_link}"}
         format.json {render :show, status: :ok, location: @complaint}
       else
         format.html {render :edit}
@@ -58,12 +53,13 @@ class ComplaintsController < ApplicationController
     end
   end
 
+
   # DELETE /complaints/1
   # DELETE /complaints/1.json
   def destroy
     @complaint.destroy
     respond_to do |format|
-      format.html {redirect_to complaints_url, notice: 'Complaint was successfully destroyed.'}
+      format.html {redirect_to complaints_url, notice: "Complaint was successfully destroyed. #{undo_link}"}
       format.json {head :no_content}
     end
   end
@@ -72,12 +68,18 @@ class ComplaintsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_complaint
-    @complaint = current_user.complaints.find(params[:id])
+    # @complaint = current_user.complaints.all
+    user_signed_in? ? @complaint = current_user.complaints.find(params[:id]) : @complaint = Complaint.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def complaint_params
-    return {} unless params[:complaint].present?
+    # return {} unless params[:complaint].present?
     params.require(:complaint).permit(:r_fname, :r_lname, :r_age, :r_gender, :r_email, :r_phone, :r_pincode, :r_address, :r_photo, :v_fname, :v_lname, :v_age, :v_gender, :v_phone, :v_email, :v_address, :v_relation, :v_photo, :c_fullname, :c_age, :c_gender, :c_address, :c_photo, :c_details, :cm_type, :cm_location, :cm_date, :cm_rfactor, :cm_details, :cm_photo, :user_id, :complaintid)
   end
+
+  def undo_link
+    view_context.link_to('undo', revert_version_path(@complaint.versions(true).last), method: :post)
+  end
+
 end
