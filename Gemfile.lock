@@ -118,7 +118,7 @@ GEM
     paper_trail (7.0.3)
       activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
-    pdfkit (0.8.2)
+    pdfkit (0.8.7.2)
     puma (3.8.2)
     rack (2.0.2)
     rack-pjax (1.0.0)
